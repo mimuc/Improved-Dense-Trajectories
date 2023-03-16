@@ -228,7 +228,7 @@ densetrack(const std::vector<Mat>& video, int track_length,
 
 			frame.copyTo(prev_grey);
 			if (show_track == 1 || image_pattern != NULL)
-				cvtColor(frame, image, CV_GRAY2BGR);
+				cvtColor(frame, image, COLOR_GRAY2BGR);
 
 			for(int iScale = 0; iScale < scale_num; iScale++) {
 				if(iScale == 0)
@@ -273,7 +273,7 @@ densetrack(const std::vector<Mat>& video, int track_length,
 		init_counter++;
 		frame.copyTo(grey);
 		if (show_track == 1 || image_pattern != NULL)
-			cvtColor(frame, image, CV_GRAY2BGR);
+			cvtColor(frame, image, COLOR_GRAY2BGR);
 
 #ifdef USE_SURF
 		if (adjust_camera) {
@@ -491,7 +491,7 @@ densetrack(const std::vector<Mat>& video, int track_length,
 
 		if( show_track == 1 ) {
 			imshow( "DenseTrackStab", image);
-			int c = cvWaitKey(3);
+			int c = waitKey(3);
 			if((char)c == 27) break;
 		}
 #ifdef USE_PYTHON

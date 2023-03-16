@@ -30,8 +30,8 @@ class CustomBuildExt(build_ext):
 
 
 try:
-    include_dirs = [os.path.join(os.environ['CONDA_PREFIX'], 'include')]
-    library_dirs = [os.path.join(os.environ['CONDA_PREFIX'], 'lib')]
+    include_dirs = ['/usr/local/include']
+    library_dirs = ['/usr/local/lib']
 except KeyError:
     include_dirs = []
     library_dirs = []
@@ -45,7 +45,7 @@ if USE_SURF:
     macros.append(('USE_SURF', None))
     libs.append('opencv_xfeatures2d')
 
-densetrack = Extension('densetrack', ['src/DenseTrackStab.cpp'],
+densetrack = Extension('densetrack', ['DenseTrackStab.cpp'],
                        include_dirs=include_dirs,
                        library_dirs=library_dirs,
                        extra_compile_args=extra_compile_args,
